@@ -1,0 +1,22 @@
+---
+output: officedown::rdocx_document
+---
+
+```{r setup, include=FALSE}
+library(officedown)
+library(ggplot2)
+```
+
+## Figure
+
+```{r fig.cap="economics plot", fig.id = "tsplot", fig.cap.style = "Image Caption"}
+ggplot(economics, aes(date, unemploy / pop)) + 
+  geom_line() + 
+  theme_minimal()
+```
+
+## Table
+
+```{r tab.cap="economics table", tab.id = "mytab", tab.cap.style = "Table Caption"}
+head(economics)
+```

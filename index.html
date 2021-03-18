@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Why R? Webinar 039</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="David Gohel" />
+    <meta name="date" content="2021-03-18" />
+    <script src="static/libs/header-attrs-2.7.3/header-attrs.js"></script>
+    <link href="static/libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="static/assets/css/bg-open-color.css" type="text/css" />
+    <link rel="stylesheet" href="static/assets/css/font-open-color.css" type="text/css" />
+    <link rel="stylesheet" href="static/assets/css/text-rect.css" type="text/css" />
+    <link rel="stylesheet" href="static/assets/css/roboto.css" type="text/css" />
+    <link rel="stylesheet" href="static/assets/css/roboto-mono.css" type="text/css" />
+    <link rel="stylesheet" href="static/assets/css/permanent-marker.css" type="text/css" />
+    <link rel="stylesheet" href="static/assets/css/flexboxgrid.min.css" type="text/css" />
+    <link rel="stylesheet" href="static/ardata-remark.css" type="text/css" />
+    <link rel="stylesheet" href="static/assets/css/nord.css" type="text/css" />
+    <link rel="stylesheet" href="static/assets/css/nord-light.css" type="text/css" />
+    <link rel="stylesheet" href="static/assets/css/nord-dark.css" type="text/css" />
+    <link rel="stylesheet" href="static/assets/css/card.css" type="text/css" />
+    <link rel="stylesheet" href="static/assets/css/abs-layout.css" type="text/css" />
+    <link rel="stylesheet" href="static/assets/css/spaces.css" type="text/css" />
+    <link rel="stylesheet" href="static/assets/css/quasar.min.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Why R? Webinar 039
+## officeverse : Creating Word and PowerPoint documents with R
+### David Gohel
+### 2021-03-18
+
+---
+
+
+
+
+
+
+# About me
+
+.pull-left[
+
+.center[
+
+Me and my family
+
+&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512" class="rfa" style="height:3.4em;fill:#C32900;position:relative;"&gt;&lt;path d="M96 0c35.346 0 64 28.654 64 64s-28.654 64-64 64-64-28.654-64-64S60.654 0 96 0m48 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H48c-26.51 0-48 21.49-48 48v136c0 13.255 10.745 24 24 24h16v136c0 13.255 10.745 24 24 24h64c13.255 0 24-10.745 24-24V352h16c13.255 0 24-10.745 24-24V192c0-26.51-21.49-48-48-48z"/&gt;&lt;/svg&gt; &lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" class="rfa" style="height:3.4em;fill:currentColor;position:relative;"&gt;&lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"/&gt;&lt;/svg&gt; &lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="rfa" style="height:2.4em;fill:currentColor;position:relative;"&gt;&lt;path d="M120 72c0-39.765 32.235-72 72-72s72 32.235 72 72c0 39.764-32.235 72-72 72s-72-32.236-72-72zm254.627 1.373c-12.496-12.497-32.758-12.497-45.254 0L242.745 160H141.254L54.627 73.373c-12.496-12.497-32.758-12.497-45.254 0-12.497 12.497-12.497 32.758 0 45.255L104 213.254V480c0 17.673 14.327 32 32 32h16c17.673 0 32-14.327 32-32V368h16v112c0 17.673 14.327 32 32 32h16c17.673 0 32-14.327 32-32V213.254l94.627-94.627c12.497-12.497 12.497-32.757 0-45.254z"/&gt;&lt;/svg&gt; &lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="rfa" style="height:1.6em;fill:currentColor;position:relative;"&gt;&lt;path d="M192 160c44.2 0 80-35.8 80-80S236.2 0 192 0s-80 35.8-80 80 35.8 80 80 80zm-53.4 248.8l25.6-32-61.5-51.2L56.8 383c-11.4 14.2-11.7 34.4-.8 49l48 64c7.9 10.5 19.9 16 32 16 8.3 0 16.8-2.6 24-8 17.7-13.2 21.2-38.3 8-56l-29.4-39.2zm142.7-83.2l-61.5 51.2 25.6 32L216 448c-13.2 17.7-9.7 42.8 8 56 7.2 5.4 15.6 8 24 8 12.2 0 24.2-5.5 32-16l48-64c10.9-14.6 10.6-34.8-.8-49l-45.9-57.4zM376.7 145c-12.7-18.1-37.6-22.4-55.7-9.8l-40.6 28.5c-52.7 37-124.2 37-176.8 0L63 135.3C44.9 122.6 20 127 7.3 145-5.4 163.1-1 188 17 200.7l40.6 28.5c17 11.9 35.4 20.9 54.4 27.9V288h160v-30.8c19-7 37.4-16 54.4-27.9l40.6-28.5c18.1-12.8 22.4-37.7 9.7-55.8z"/&gt;&lt;/svg&gt;
+
+Some of my open source
+
+[&lt;img src="static/assets/img/ggiraphlogo.svg" style="height:3.5em;"&gt;](https://CRAN.R-project.org/package=ggiraph) [&lt;img src="static/assets/img/officerlogo.svg" style="height:3.5em;"&gt;](https://CRAN.R-project.org/package=officer) [&lt;img src="static/assets/img/flextable-logo.png" style="height:3.5em;"&gt;](https://CRAN.R-project.org/package=flextable) [&lt;img src="static/assets/img/logo-officedown.svg" style="height:3.5em;"&gt;](https://CRAN.R-project.org/package=officedown) [&lt;img src="static/assets/img/logo-fpeek.svg" style="height:3.5em;"&gt;](https://CRAN.R-project.org/package=fpeek)
+
+
+
+Funder of 
+
+![](static/assets/img/ardata-logo-medium.svg)
+
+Based in Paris, France
+
+]
+
+
+]
+
+
+.pull-right[
+
+[at https://www.ardata.fr](https://www.ardata.fr)
+
+&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="rfa" style="height:1.7em;fill:currentColor;position:relative;"&gt;&lt;path d="M610.5 341.3c2.6-14.1 2.6-28.5 0-42.6l25.8-14.9c3-1.7 4.3-5.2 3.3-8.5-6.7-21.6-18.2-41.2-33.2-57.4-2.3-2.5-6-3.1-9-1.4l-25.8 14.9c-10.9-9.3-23.4-16.5-36.9-21.3v-29.8c0-3.4-2.4-6.4-5.7-7.1-22.3-5-45-4.8-66.2 0-3.3.7-5.7 3.7-5.7 7.1v29.8c-13.5 4.8-26 12-36.9 21.3l-25.8-14.9c-2.9-1.7-6.7-1.1-9 1.4-15 16.2-26.5 35.8-33.2 57.4-1 3.3.4 6.8 3.3 8.5l25.8 14.9c-2.6 14.1-2.6 28.5 0 42.6l-25.8 14.9c-3 1.7-4.3 5.2-3.3 8.5 6.7 21.6 18.2 41.1 33.2 57.4 2.3 2.5 6 3.1 9 1.4l25.8-14.9c10.9 9.3 23.4 16.5 36.9 21.3v29.8c0 3.4 2.4 6.4 5.7 7.1 22.3 5 45 4.8 66.2 0 3.3-.7 5.7-3.7 5.7-7.1v-29.8c13.5-4.8 26-12 36.9-21.3l25.8 14.9c2.9 1.7 6.7 1.1 9-1.4 15-16.2 26.5-35.8 33.2-57.4 1-3.3-.4-6.8-3.3-8.5l-25.8-14.9zM496 368.5c-26.8 0-48.5-21.8-48.5-48.5s21.8-48.5 48.5-48.5 48.5 21.8 48.5 48.5-21.7 48.5-48.5 48.5zM96 224c35.3 0 64-28.7 64-64s-28.7-64-64-64-64 28.7-64 64 28.7 64 64 64zm224 32c1.9 0 3.7-.5 5.6-.6 8.3-21.7 20.5-42.1 36.3-59.2 7.4-8 17.9-12.6 28.9-12.6 6.9 0 13.7 1.8 19.6 5.3l7.9 4.6c.8-.5 1.6-.9 2.4-1.4 7-14.6 11.2-30.8 11.2-48 0-61.9-50.1-112-112-112S208 82.1 208 144c0 61.9 50.1 112 112 112zm105.2 194.5c-2.3-1.2-4.6-2.6-6.8-3.9-8.2 4.8-15.3 9.8-27.5 9.8-10.9 0-21.4-4.6-28.9-12.6-18.3-19.8-32.3-43.9-40.2-69.6-10.7-34.5 24.9-49.7 25.8-50.3-.1-2.6-.1-5.2 0-7.8l-7.9-4.6c-3.8-2.2-7-5-9.8-8.1-3.3.2-6.5.6-9.8.6-24.6 0-47.6-6-68.5-16h-8.3C179.6 288 128 339.6 128 403.2V432c0 26.5 21.5 48 48 48h255.4c-3.7-6-6.2-12.8-6.2-20.3v-9.2zM173.1 274.6C161.5 263.1 145.6 256 128 256H64c-35.3 0-64 28.7-64 64v32c0 17.7 14.3 32 32 32h65.9c6.3-47.4 34.9-87.3 75.2-109.4z"/&gt;&lt;/svg&gt; With Clémentine and Panagiotis
+
+&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 581 512" class="rfa" style="height:1.7em;fill:currentColor;position:relative;"&gt;&lt;path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/&gt;&lt;/svg&gt; package development, deploiement, support, migration, shiny development
+
+&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="rfa" style="height:1.7em;fill:currentColor;position:relative;"&gt;&lt;path d="M480 160H32c-17.673 0-32-14.327-32-32V64c0-17.673 14.327-32 32-32h448c17.673 0 32 14.327 32 32v64c0 17.673-14.327 32-32 32zm-48-88c-13.255 0-24 10.745-24 24s10.745 24 24 24 24-10.745 24-24-10.745-24-24-24zm-64 0c-13.255 0-24 10.745-24 24s10.745 24 24 24 24-10.745 24-24-10.745-24-24-24zm112 248H32c-17.673 0-32-14.327-32-32v-64c0-17.673 14.327-32 32-32h448c17.673 0 32 14.327 32 32v64c0 17.673-14.327 32-32 32zm-48-88c-13.255 0-24 10.745-24 24s10.745 24 24 24 24-10.745 24-24-10.745-24-24-24zm-64 0c-13.255 0-24 10.745-24 24s10.745 24 24 24 24-10.745 24-24-10.745-24-24-24zm112 248H32c-17.673 0-32-14.327-32-32v-64c0-17.673 14.327-32 32-32h448c17.673 0 32 14.327 32 32v64c0 17.673-14.327 32-32 32zm-48-88c-13.255 0-24 10.745-24 24s10.745 24 24 24 24-10.745 24-24-10.745-24-24-24zm-64 0c-13.255 0-24 10.745-24 24s10.745 24 24 24 24-10.745 24-24-10.745-24-24-24z"/&gt;&lt;/svg&gt; scientific cloud computing environment (jupyterhub, RStudio, ...)
+
+
+
+&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="rfa" style="height:1.7em;fill:currentColor;position:relative;"&gt;&lt;path d="M208 352c-2.39 0-4.78.35-7.06 1.09C187.98 357.3 174.35 360 160 360c-14.35 0-27.98-2.7-40.95-6.91-2.28-.74-4.66-1.09-7.05-1.09C49.94 352-.33 402.48 0 464.62.14 490.88 21.73 512 48 512h224c26.27 0 47.86-21.12 48-47.38.33-62.14-49.94-112.62-112-112.62zm-48-32c53.02 0 96-42.98 96-96s-42.98-96-96-96-96 42.98-96 96 42.98 96 96 96zM592 0H208c-26.47 0-48 22.25-48 49.59V96c23.42 0 45.1 6.78 64 17.8V64h352v288h-64v-64H384v64h-76.24c19.1 16.69 33.12 38.73 39.69 64H592c26.47 0 48-22.25 48-49.59V49.59C640 22.25 618.47 0 592 0z"/&gt;&lt;/svg&gt; R Trainings
+
+
+
+]
+
+---
+class: middle, center
+
+# Short introduction to ![](static/assets/img/officerlogo.png)
+
+
+---
+## Why officer?
+
+The officer package has been developed to facilitate the production of Word documents and PowerPoint presentations with R.
+
+* Original motivation: 2013-2014, provide an alternative to SAS ODS 
+for clinical report. Thanks to Jean-François Collin for the inital 
+*support*.
+
+* Strong interest from customers and users 
+
+* Need a programmatic solution to generate Word and PowerPoint documents: R code
+only.
+
+---
+## Package overview
+
+.card.noborder[
+
+.card.width-48[
+.section[**1 - Word generation**]
+.section.font-sm[
+
+* create documents, append to documents
+* support for tables, plots, {flextable}, paragraphs, TOC, ...
+* support for sections
+
+&lt;img src="static/assets/img/microsoft-word.png" style="height:75px;"&gt;
+
+]
+]
+
+
+.card.width-48[
+.section[**1 - PowerPoint generation**]
+.section.font-sm[
+
+* create documents, append to documents
+* organise content in slides
+* support for tables, plots, {flextable}, paragraphs, ...
+
+&lt;img src="static/assets/img/microsoft-powerpoint.jpg" style="height:75px;"&gt;
+
+]
+]
+
+
+
+.card.width-25[
+.section[**3 - R Markdown support**]
+.section.font-sm[
+
+Support for chunks and blocks of output. Use the package {officedown} 
+to make it easy.
+
+&lt;img src="static/assets/img/logo-officedown.png" style="height:75px;"&gt;
+
+
+]
+
+]
+
+.card.width-44[
+.section[**4 - extensions**]
+.section.font-sm[
+
+Graphics can be edited in PowerPoint (and Excel) with package {rvg}.
+
+Tables can be edited in PowerPoint and Word with package {flextable}.
+
+Office charts can be generated in PowerPoint and Word with package {mschart}.
+
+]
+]
+
+
+
+
+.card.width-25[
+.section[**5 - Doc**]
+.section.font-sm[
+
+A detailed&amp;nbsp;&lt;a href="https://ardata-fr.github.io/officeverse/"&gt;documentation&lt;/a&gt; with many illustrations is available, made with 
+&lt;img src="static/assets/img/bookdown-logo.png" style="width:75px;"&gt;
+
+]
+]
+
+
+
+
+]
+
+
+---
+## History
+
+
+* **2014-03-03**: ReporteRs first realease on CRAN.
+* **2017-01-01**: ReporteRs is a mess!
+* **2017-03-30**: officer first realease on CRAN.
+* **2018-07-16**: ReporteRs archived on CRAN.
+* **2018-07-06**: Look for a better integration with R Markdown...
+
+
+---
+class: inverse
+background-image: url("static/assets/img/canards.jpg")
+
+# Officeverse
+
+&lt;style type="text/css"&gt;
+.readable{
+  color: white;
+  font-weight: bold;
+  background-color: #00000073;
+  font-size: 1.3em;
+}
+
+&lt;/style&gt;
+
+.readable[
+
+
+The officeverse is a collection of R packages designed to help R users to generate Word and PowerPoint outputs:
+
+* {officer} is the spine
+* {flextable} is for tabular reporting
+* {officedown} brings officer features in R Markdown
+* {rvg} is for editable vector graphics
+* {mschart} is producing real Office charts (Its maintenance is interrupted but will be resumed soon)
+
+]
+
+
+---
+## Documentation
+
+User guide: https://ardata-fr.github.io/officeverse/
+
+
+
+
+
+![officeverse-book](static/assets/img/officeverse-book.png)
+
+
+
+---
+## Editable Vector Graphics
+
+`rvg::dml` function is a simple wrapper to mark the plot instructions as Vector Graphics instructions
+
+
+```r
+library(rvg)
+my_gg &lt;- ggplot(airquality, aes(Ozone,Wind)) + geom_point()
+*my_vec_graph &lt;- dml(ggobj = my_gg)
+
+read_pptx() %&gt;% 
+  add_slide() %&gt;% 
+  ph_with(my_vec_graph, location = ph_location_fullsize() ) %&gt;% 
+  print(target = "reports/rvg.pptx")
+```
+
+
+[Download rvg.pptx](reports/rvg.pptx)
+
+&lt;img src="static/img/talk/img-unnamed-chunk-4-1.png" width="1000" /&gt;
+
+
+
+---
+## Office charts
+
+
+```r
+library(mschart)
+linec &lt;- ms_linechart(
+  data = mtcars, x = "mpg",
+  y = "wt", group = "am")
+linec &lt;- chart_ax_y(linec, num_fmt = "0.00", rotation = -90)
+
+read_pptx() %&gt;% 
+  add_slide() %&gt;% 
+  ph_with(linec, location = ph_location_fullsize() ) %&gt;% 
+  print(target = "reports/mschart.pptx")
+```
+
+
+[Download mschart.pptx](reports/mschart.pptx)
+
+&lt;img src="static/img/talk/img-unnamed-chunk-6-1.png" width="1000" /&gt;
+
+
+---
+class: center, middle, inverse
+# Officer for PowerPoint
+
+---
+## Verbs and supported outputs
+
+.pull-left[
+
+**Verbs**
+
+* `read_pptx()`: read a pptx and return an object of class `rpptx`
+* `add_slide()`: add a slide to `rpptx` object
+* `ph_with()`: add content to a placeholder on the current slide
+* `print(target = "...")`: write the result in a pptx file
+
+]
+
+.pull-right[
+
+**Supported outputs**
+
+* atomic vectors
+* ggplot objects and plot (eventually as editable Vector Graphics)
+* images
+* flextables
+* `block_list` and `fpar`
+
+]
+
+
+```r
+my_gg &lt;- ggplot(airquality, aes(Ozone,Wind)) + geom_point()
+my_ft &lt;- qflextable(head(airquality, n = 11))
+read_pptx() %&gt;% add_slide(layout = "Two Content") %&gt;% 
+  ph_with("My first slide", location = ph_location_type(type = "title")) %&gt;% 
+  ph_with(my_gg, location = ph_location_left()) %&gt;% 
+  ph_with(my_ft, location = ph_location_right()) %&gt;% 
+  print(target = "reports/first_example.pptx")
+```
+
+---
+
+[Download first_example.pptx](reports/first_example.pptx)
+
+&lt;img src="static/img/talk/img-unnamed-chunk-8-1.png" width="1000" /&gt;
+
+---
+## Using a template
+
+Let's define a template...
+
+[Download template.pptx](reports/template.pptx)
+
+
+
+```r
+read_pptx(path = "reports/template.pptx") %&gt;% 
+  add_slide(layout = "why_r_demo", master = "Thème Office") %&gt;% 
+  ph_with("My first slide", location = ph_location_type(type = "title")) %&gt;% 
+* ph_with(my_gg, location = ph_location_label(ph_label = "ph_left")) %&gt;%
+  ph_with(my_ft, location = ph_location_label(ph_label = "ph_right")) %&gt;% 
+  print(target = "reports/example_template.pptx")
+```
+
+[Download example_template.pptx](reports/example_template.pptx)
+
+---
+
+&lt;img src="static/img/talk/img-unnamed-chunk-10-1.png" width="1000" /&gt;
+
+
+
+---
+class: center, middle, inverse
+# Officer for Word
+
+
+---
+## Verbs
+
+* `read_docx()`: read a pptx and return an object of class `rdocx`
+* `print(target = "...")`: write the result in a docx file
+* `body_add_par()`, `body_add_gg()`, `body_add_plot()`, `body_add_img()`, 
+`body_add_table()`, `body_add_blocks()`, `body_add_fpar()`, `body_add_break()`, 
+`body_add_caption()`, `body_add_docx()`, `body_add_toc()`, `body_end_block_section()`
+
+
+.pull-left[
+
+
+
+```r
+read_docx() %&gt;% 
+  body_add_par("My ggplot", 
+               style = "heading 1") %&gt;% 
+  body_add_gg(my_gg, style = "centered") %&gt;% 
+  body_add_break() %&gt;% 
+  body_add_par("My flextable", 
+               style = "heading 1") %&gt;% 
+  body_add_flextable(my_ft, 
+                     align = "right") %&gt;% 
+  print(
+    target = "reports/first_example.docx")
+```
+
+]
+
+
+.pull-right[
+
+
+
+[Download first_example.docx](reports/first_example.docx)
+
+&lt;img src="static/img/talk/img-unnamed-chunk-12-1.png" width="1733" /&gt;
+
+]
+
+
+---
+## Using a template
+
+Let's define a template...
+
+[Download template.docx](reports/template.docx)
+
+
+
+```r
+read_docx(path = "reports/template.docx") %&gt;% 
+  body_add_par("My ggplot", style = "heading 1") %&gt;% 
+  body_add_gg(my_gg, style = "centered") %&gt;% 
+  body_add_par("Hello Why R?", style = "whyr_style") %&gt;% 
+  body_add_break() %&gt;% 
+  body_add_par("My flextable", style = "heading 1") %&gt;% 
+  body_add_flextable(my_ft, align = "right") %&gt;% 
+  print(target = "reports/example_template.docx")
+```
+
+
+---
+
+.center[
+
+[Download example_template.docx](reports/example_template.docx)
+
+]
+
+&lt;img src="static/img/talk/img-unnamed-chunk-14-1.png" width="1733" /&gt;
+
+---
+## Focus on blocks and chunks
+
+* What is a block? What is a chunk?
+* Formatting properties with `fp_text()` and `fp_par()`
+
+
+```r
+red_font &lt;- fp_text(font.size = 40, color = "red", bold = TRUE)
+gray_font &lt;- update(red_font, color = "gray", italic = TRUE)
+
+a_par &lt;- fpar(
+  ftext("hello", red_font), " ", ftext("world", gray_font),
+  fp_p = fp_par(text.align = "center", padding = 5))
+```
+
+&lt;p style="margin:0pt;text-align:center;border-bottom: 0.00pt solid transparent;border-top: 0.00pt solid transparent;border-left: 0.00pt solid transparent;border-right: 0.00pt solid transparent;padding-top:5pt;padding-bottom:5pt;padding-left:5pt;padding-right:5pt;background-color:transparent;"&gt;&lt;span style="font-family:'Arial';color:rgba(255,0,0,1.00);font-size:40.0pt;font-style:normal;font-weight:bold;text-decoration:none;background-color:transparent;"&gt;hello&lt;/span&gt;&lt;span style="font-family:'Arial';color:rgba(0,0,0,1.00);font-size:10.0pt;font-style:normal;font-weight:normal;text-decoration:none;background-color:transparent;"&gt; &lt;/span&gt;&lt;span style="font-family:'Arial';color:rgba(190,190,190,1.00);font-size:40.0pt;font-style:italic;font-weight:bold;text-decoration:none;background-color:transparent;"&gt;world&lt;/span&gt;&lt;/p&gt;
+
+.pull-left[
+
+
+```r
+read_docx(path = "reports/template.docx") %&gt;% 
+  body_add_fpar(a_par) %&gt;% 
+  print(target = "reports/example_fpar.docx")
+```
+
+]
+
+.pull-right[
+
+.center[
+
+[Download example_fpar.docx](reports/example_fpar.docx)
+
+]
+
+&lt;img src="static/img/talk/img-unnamed-chunk-18-1.png" width="867" /&gt;
+
+]
+
+---
+## Sections
+
+
+```r
+value &lt;- block_list(
+* block_section(prop_section(type = "continuous")),
+  
+  a_par, block_table(x = head(iris)),
+  fpar(
+*   run_columnbreak(),
+    ftext("hello", red_font), " ", ftext("world", gray_font)),
+  
+* block_section(
+    prop_section(
+      section_columns = section_columns(
+        widths = c(4,2.5), space = .25, sep = TRUE),
+    type = "continuous")))
+```
+
+.pull-left[
+
+
+```r
+read_docx(path = "reports/template.docx") %&gt;% 
+  body_add_blocks(value) %&gt;% 
+  print(target = "reports/example_block.docx")
+```
+
+]
+
+.pull-right[
+
+.center[
+
+[Download example_block.docx](reports/example_block.docx)
+
+]
+
+&lt;img src="static/img/talk/img-unnamed-chunk-21-1.png" width="867" /&gt;
+
+]
+
+---
+class: center, middle, inverse
+# officedown for Word
+
+---
+## Features
+
+* Compatibility with the functions of the package `officer` for the 
+production of "runs" and "blocks" of content (text formatting, landscape mode, 
+tables of contents, etc.). 
+
+* Ability to use the table styles and list styles defined in the "reference_docx" 
+which serves as a template for the pandoc document.
+
+* The replacement of captions (tables, figures and standard identifiers) by
+captions containing a Word bookmark that can be used for cross-referencing. 
+Also the replacement of cross-references by cross-references using fields calculated
+by Word. The syntax conforms to the bookdown cross-reference definition.
+
+* Full support for flextable output, including with outputs containing images and links.
+
+
+
+---
+## Automated formatting
+
+The package will automatically perform a set of formatting tasks on the resulting document. The tasks performed are the following:
+
+* Use a Word table template to format all the `data.frame` that are printed in the document.
+* Use two Word list templates (for unordered lists and for ordered lists) to format the set of ordered and ordered lists defined in the R Markdown document.
+* Transforming the cross-references and captions defined in the R Markdown document as calculated by Word. It is then easy to copy and paste the content into another document without losing the reference numbers. Captions are also auto-numbered by Word.
+
+
+The parameters of these transformations are defined in the `officedown::rdocx_document` function. 
+
+They can be defined in the YAML header of the R Markdown document. 
+
+---
+### Tables
+
+The parameter `tables` is a list that can contain few items to style tables and table captions.
+
+.pull-left[
+
+* `style`: the Word stylename to use for tables.
+* `layout`: 'autofit' or 'fixed' algorithm. 
+* `width`: value of the preferred width of the table in percent (base 1).
+* `caption`; caption options, i.e.:
+  * `style`: Word stylename to use for table captions.
+  * `pre`: prefix for numbering chunk (default to "Table ").
+  * `sep`: suffix for numbering chunk (default to ": ").
+* `conditional`: a list of named logical values:
+  * `first_row` and `last_row`: apply or remove formatting from the first or last row in the table
+  * `first_column`  and `last_column`: apply or remove formatting from the first or last column in the table
+  * `no_hband` and `no_vband`: don't display odd and even rows or columns with alternating shading for ease of reading.
+
+]
+
+.pull-right[
+
+The default values in YAML format are:
+
+```yaml
+output: 
+  officedown::rdocx_document:
+    tables:
+      style: Table
+      layout: autofit
+      width: 1.0
+      caption:
+       style: Table Caption
+       pre: 'Table '
+       sep: ': '
+      conditional:
+       first_row: true
+       first_column: false
+       last_row: false
+       last_column: false
+       no_hband: false
+       no_vband: true
+```
+]
+
+---
+
+### Plots
+
+The parameter `plots` is a list that can contain few items to style plots and figure captions.
+
+.pull-left[
+
+* `style`: the Word stylename to use for plots.
+* `align`: alignment of figures in the output document (possible values are 'left',
+'right' and 'center').
+* `caption`; caption options, i.e.:
+  * `style`: Word stylename to use for figure captions.
+  * `pre`: prefix for numbering chunk (default to "Figure ").
+  * `sep`: suffix for numbering chunk (default to ": ").
+
+]
+
+.pull-right[
+
+The default values in YAML format are:
+
+```yaml
+output: 
+  officedown::rdocx_document:
+    plots:
+      style: Normal
+      align: center
+      caption:
+       style: Image Caption
+       pre: 'Figure '
+       sep: ': '
+```
+
+]
+
+---
+
+### Lists
+
+The parameter `lists` is a list that can contain two named items `ol.style` and
+`ul.style`, values are the stylenames to be used to replace the style of ordered
+and unordered lists created by pandoc. If NULL, no replacement is made.
+
+The default values are the following values:
+
+
+```r
+list(ol.style = NULL, ul.style = NULL)
+```
+
+These values in YAML format are:
+
+```
+output: 
+  officedown::rdocx_document:
+    lists:
+      ol.style: null
+      ul.style: null
+```
+
+---
+## Set caption label
+
+Use knitr chunk options `fig.cap` or `tab.cap` to specify the label of the
+caption. If a table, caption will be added before the table, if a graphic,
+caption will be added after the graphic. 
+
+Use knitr chunk options `fig.id` or `tab.id` to specify the bookmark associated with the
+caption. 
+
+
+
+---
+## officedown demo
+
+
+```r
+rmarkdown::render("reports/officedown-demo.Rmd")
+```
+
+.center[
+
+[Download officedown-demo.docx](reports/officedown-demo.docx)
+
+]
+
+&lt;img src="static/img/talk/img-unnamed-chunk-24-1.png" width="2133" /&gt;
+
+
+
+---
+## bookdown demo
+
+See in `codes/bookdown/`
+
+---
+## Plans
+
+* Package {mschart}: refactor, document, support for officedown?
+
+* Add option to post-process
+
+* Support for section headers and footers
+
+
+
+
+---
+# Maintenance and support
+
+.rect.round-md.lime[
+
+.oc-red-9[
+
+The set of packages is actively maintained - but not mschart - but soon again.
+
+]
+
+]
+
+Using the package, questions and help: 
+
+* https://stackoverflow.com/questions/tagged/officer
+* https://stackoverflow.com/questions/tagged/officedown
+* https://stackoverflow.com/questions/tagged/flextable
+
+Found a bug, feature request: 
+
+https://github.com/davidgohel/officer/issues
+https://github.com/davidgohel/officedown/issues
+https://github.com/davidgohel/flextable/issues
+https://github.com/davidgohel/rvg/issues
+https://github.com/ardata-fr/mschart/issues
+
+
+
+
+---
+class: center, middle, inverse
+
+&lt;style type="text/css"&gt;
+.manual{
+  font-family: 'Permanent Marker';
+  font-size: 5em;
+  color: white;
+}
+
+&lt;/style&gt;
+
+.manual[
+
+Thank you
+
+]
+
+Link to GitHub repository: https://github.com/ardata-fr/officeverse-whyr
+
+Link to the presentation: https://youtu.be/sWDhPI8gKGg and https://ardata-fr.github.io/officeverse-whyr
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="static/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+  </body>
+</html>

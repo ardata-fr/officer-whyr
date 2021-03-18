@@ -1,0 +1,212 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+}
+
+code {
+  font-family: 'Roboto Mono', monospace;
+}
+pre, code {
+  font-size: .85em;
+}
+
+h1, h2, h3 {
+  color:#2e3440;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 1px;
+  margin-block-start: 15px;
+}
+
+h2{
+  border-bottom: 2pt solid #C32900;
+}
+.inverse h2{
+  border-bottom: 0pt solid #C32900;
+}
+
+code {
+  hyphens: none;
+  color: #C32900;
+}
+
+pre > code {
+  hyphens: none;
+  color: #666666;
+}
+
+.marker-writting > * {
+  font-family: 'Permanent Marker', cursive;
+}
+
+
+.title-slide{
+}
+.title-slide h1, .title-slide h2 {
+  color: #F7F8FA;
+  font-family: 'Roboto', sans-serif;
+
+}
+.title-slide h1 {
+  font-size: 80px;
+}
+.title-slide h2 {
+  font-size: 50px;
+}
+.title-slide h3 {
+  color: #C32900;
+  text-align: right;
+  margin-block-start: 0.2em;
+  margin-block-end: 0.2em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+.title-slide .remark-slide-number {
+  display: none;
+}
+
+.remark-slide-content:after{
+  content: " ";
+  text-align:left;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  height: 28px;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: 75px 28px;
+  background-image: url('./ardata-logo.svg');
+}
+
+.title-slide::before {
+  content: "https://www.ardata.fr";
+  color: white;
+  font-family: 'Roboto Mono', monospace;
+  right: 20px;
+  bottom: 40px;
+  position: absolute;
+  width: 100%;
+  text-align:right;
+  height: 15px;
+  font-size: 15px;
+  letter-spacing: 3px;
+}
+
+.inverse {
+  background-color: #2e3440;
+  color: white;
+  text-shadow: 0px 0 black;
+}
+.inverse h1, .inverse h2, .inverse h3 {
+  color: white;
+  text-shadow: 0px 0 black;
+}
+.inverse code {
+  color: #e0e0e0;
+}
+
+.inverse:after {
+  content: " ";
+  text-align:left;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  height: 28px;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: 75px 28px;
+  background-image: url('./ardata-logo-inv.svg');
+}
+
+
+.title-slide::after {
+  content: " ";
+  text-align:left;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 56px;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: 150px 56px;
+  background-position: left top;
+  background-image: url('./ardata-logo-inv.svg');
+}
+
+img {
+    max-width: 100%;
+}
+
+
+
+.left-column h2, .left-column h3 {
+    color:rgba(100, 100, 100, 0.5);
+    font-size: 20pt;
+}
+.right-column h3 {
+    font-size: 25pt;
+}
+.left-column h2:last-of-type, .left-column h3:last-child, .left-column h4:last-child {
+    color:#C32900;
+}
+
+.remark-slide-number{
+  opacity:1;
+}
+.pull-left > pre > .remark-code{
+  font-size: 14px;
+}
+.pull-right > pre > .remark-code{
+  font-size: 14px;
+}
+
+.col-xs-6 > pre > .remark-code{
+  font-size: 16px;
+}
+.col-xs-6 > pre > .hljs{
+  font-size: 14px;
+}
+
+.bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  /* Preserve aspet ratio */
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.smaller{
+  font-size: .65em;
+}
+
+.pull-left {
+  float: left;
+  width: 47%;
+}
+.pull-right {
+  float: right;
+  width: 47%;
+}
+
+.pull-left, .pull-right {
+  font-size: 0.9em;
+}
+.pull-left > h1, .pull-right > h1 {
+  font-size: 40px;
+}
+.pull-left > h2, .pull-right > h2 {
+  font-size: 35px;
+}
+.pull-left > h3, .pull-right > h3 {
+  font-size: 30px;
+}
+
+
+.font-sm {
+  font-size: 14px;
+}
+
+.font-sm .remark-code {
+  font-size: 14px;
+}
